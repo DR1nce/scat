@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Twitter, MessageCircle, ExternalLink, Copy, Megaphone, Languages, Moon, Sun, Music } from 'lucide-react';
+import { Twitter, MessageCircle, BellRing, ExternalLink, Copy, Megaphone, Languages, Moon, Sun, Music } from 'lucide-react';
 
 const fontUrl = 'https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap';
 
@@ -104,17 +104,20 @@ const ScatmanLanding = () => {
         ))}
       </div>
 
+    
+
+
       {/* Неоновая анимация иконок и переключение язков */}
-      <div className="absolute top-4 right-4 flex gap-4">
+      <div className="relative top-4 left-4 flex gap-4">
         <button
           onClick={() => setLanguage(language === 'en' ? 'ru' : 'en')}
-          className="p-2 bg-opacity-50 bg-gray-700 rounded-full hover:scale-110 transition-transform duration-200"
+          className="p-3 bg-opacity-50 bg-gray-700 rounded-full hover:scale-110 transition-transform duration-200"
         >
           <Languages size={24} />
         </button>
         <button
           onClick={() => setTheme(theme === 'dark' ? 'neon' : 'dark')}
-          className="p-2 bg-opacity-50 bg-gray-700 rounded-full hover:scale-110 transition-transform duration-200"
+          className="p-3 bg-opacity-50 bg-gray-700 rounded-full hover:scale-110 transition-transform duration-200"
         >
           {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
         </button>
@@ -185,11 +188,11 @@ const ScatmanLanding = () => {
       </header>
 
       {/* Музыкальный проигрыватель */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
+      <div className="fixed bottom-4 md:left-1/2 left-[85%] transform md:-translate-x-1/2 -translate-x-1/2 z-50 flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
   <button onClick={toggleMusic} className="p-2 text-white hover:scale-110 transition-transform">
     <Music size={24} />
   </button>
-  <span className="ml-4 text-white" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
+  <span className="ml-4 text-white md:block hidden" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
   <audio id="audio-player" src="scatman.mp3" />
 </div>
 
@@ -231,7 +234,33 @@ const ScatmanLanding = () => {
   </div>
 </section>
 
-
+  {/* Кнопки с чатом, каналом и Х*/}
+  <div className="fixed bottom-4 left-4 flex gap-4 z-50">
+      <a 
+        href="https://t.me/scatmanchat" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="p-3 bg-gray-700 bg-opacity-50 rounded-full hover:scale-110 transition-transform duration-200 text-white"
+      >
+        <MessageCircle size={24} />
+      </a>
+      <a 
+        href="https://t.me/scatmanonton" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="p-3 bg-gray-700 bg-opacity-50 rounded-full hover:scale-110 transition-transform duration-200 text-white"
+      >
+        <BellRing size={24} />
+      </a>
+      <a 
+        href="https://x.com/scatmanmp3" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="p-3 bg-gray-700 bg-opacity-50 rounded-full hover:scale-110 transition-transform duration-200 text-white"
+      >
+        <Twitter size={24} />
+      </a>
+    </div>
 
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center relative z-10">
