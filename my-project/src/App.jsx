@@ -1,20 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Twitter, MessageCircle, BellRing, ExternalLink, Copy, Megaphone, Languages, Moon, Sun, Music } from 'lucide-react';
+import { Twitter, MessageCircle, BellRing, ExternalLink, Copy, Megaphone, Languages, Moon, Sun, Music, Check} from 'lucide-react';
 
 const fontUrl = 'https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&display=swap';
 
 const ScatmanLanding = () => {
   const [copied, setCopied] = useState(false);
+  const walletAddress = "EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n";
   const [language, setLanguage] = useState('en');
   const [theme, setTheme] = useState('neon');
   const [isPlaying, setIsPlaying] = useState(false);
 
   const contractAddress = "EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n";
 
-  const copyAddress = () => {
-    navigator.clipboard.writeText(contractAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(walletAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      const textArea = document.createElement('textarea');
+      textArea.value = walletAddress;
+      textArea.style.position = 'fixed'; 
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy text:', err);
+      }
+      document.body.removeChild(textArea);
+    }
   };
 
   const translations = {
@@ -192,14 +210,13 @@ const ScatmanLanding = () => {
     </p>
 
     <button
-    onClick={copyAddress}
-    ontouchend={copyAddress}
-    className="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-opacity-80 border-2 border-current rounded-full hover:bg-opacity-100 transition-transform neon-effect text-xs sm:text-sm md:text-base max-w-full"
-  >
-    <Copy size={20} />
-    <span className=" md:inline">EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n</span>
-    
-  </button>
+      onClick={copyAddress}
+      className="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-opacity-80 border-2 border-current rounded-full hover:bg-opacity-100 transition-transform text-xs sm:text-sm md:text-base max-w-full touch-manipulation"
+    >
+      {copied ? <Check size={20} /> : <Copy size={20} />}
+      <span className="md:inline break-all">{walletAddress}</span>
+    </button>
+
   </div>
       </header>
 
