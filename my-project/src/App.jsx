@@ -9,7 +9,7 @@ const ScatmanLanding = () => {
   const [theme, setTheme] = useState('neon');
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const contractAddress = "0xSCATMAN...";
+  const contractAddress = "EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n";
 
   const copyAddress = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -126,9 +126,15 @@ const ScatmanLanding = () => {
       {/* Основной контент */}
       <header className="container mx-auto px-4 py-8 relative z-10" style={{ fontFamily: 'Russo One, sans-serif' }}>
       <nav className="relative flex flex-col sm:flex-row justify-between items-center mb-8 p-4 sm:p-0">
+
+       <div className='flex flex-col gap-2 mb-5'>
+        
     <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-widest neon-effect text-center sm:text-left w-full sm:w-auto mb-4 sm:mb-0">
       {currentLang.title}
     </h1>
+    </div>
+    
+   
     <div className='flex gap-14'>
     <div className=" absolute sm:static top-full sm:top-0 right-0 sm:right-auto flex items-center justify-center w-full sm:w-auto mt-2 sm:mt-0">
       <a
@@ -188,13 +194,30 @@ const ScatmanLanding = () => {
       </header>
 
       {/* Музыкальный проигрыватель */}
-      <div className="fixed bottom-4 md:left-1/2 left-[85%] transform md:-translate-x-1/2 -translate-x-1/2 z-50 flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
-  <button onClick={toggleMusic} className="p-2 text-white hover:scale-110 transition-transform">
-    <Music size={24} />
+      <div className='fixed bottom-4 md:left-1/2 left-[85%] transform md:-translate-x-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 md:flex-row md:gap-3'>
+  <div className="flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
+    <button onClick={toggleMusic} className="p-2 text-white hover:scale-110 transition-transform">
+      <Music size={24} />
+    </button>
+    <span className="ml-4 text-white md:block hidden" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
+    <audio id="audio-player" src="scatman.mp3" />
+  </div>
+  <button
+    onClick={copyAddress}
+    className="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-opacity-80 border-2 border-current rounded-full hover:bg-opacity-100 transition-transform neon-effect text-xs sm:text-sm md:text-base max-w-full"
+  >
+    <Copy size={20} />
+    <span className="hidden md:inline sm:hidden">Copy Address</span>
+    <span className="md:hidden sm:inline hidden">Ca</span>
   </button>
-  <span className="ml-4 text-white md:block hidden" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
-  <audio id="audio-player" src="scatman.mp3" />
+
+ 
 </div>
+{copied && (
+    <div className="text-sm text-white fixed left-1/2 transform -translate-x-1/2 top-0 mt-4 px-4 py-2 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg animate-fadeInUp">
+      Address Copied!
+    </div>
+  )}
 
       {/* Секция About с неоновой рамкой */}
       <section className="container mx-auto px-4 py-16 relative z-10" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>
@@ -253,7 +276,7 @@ const ScatmanLanding = () => {
         <BellRing size={24} />
       </a>
       <a 
-        href="https://x.com/scatmanmp3" 
+        href="https://x.com/scatmanmp3alt" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="p-3 bg-gray-700 bg-opacity-50 rounded-full hover:scale-110 transition-transform duration-200 text-white"
@@ -263,7 +286,7 @@ const ScatmanLanding = () => {
     </div>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center relative z-10">
+      <footer className="container mx-auto pb-24 px-4 py-8 text-center relative z-10">
         <p className="neon-effect">© 2024 $SCT - The Cutest Meme Token on TON 🐱</p>
       </footer>
 
