@@ -193,11 +193,12 @@ const ScatmanLanding = () => {
 
     <button
     onClick={copyAddress}
+    ontouchend={copyAddress}
     className="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-opacity-80 border-2 border-current rounded-full hover:bg-opacity-100 transition-transform neon-effect text-xs sm:text-sm md:text-base max-w-full"
   >
     <Copy size={20} />
-    <span className="hidden md:inline sm:hidden">EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n</span>
-    <span className="md:hidden sm:inline hidden">Ca</span>
+    <span className=" md:inline">EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n</span>
+    
   </button>
   </div>
       </header>
