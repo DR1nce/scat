@@ -190,29 +190,31 @@ const ScatmanLanding = () => {
     <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-xl sm:max-w-2xl px-4 sm:px-0 neon-effect">
       {currentLang.description}
     </p>
-  </div>
-      </header>
 
-      {/* Музыкальный проигрыватель */}
-      <div className='fixed bottom-4 md:left-1/2 left-[85%] transform md:-translate-x-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 md:flex-row md:gap-3'>
-  <div className="flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
-    <button onClick={toggleMusic} className="p-2 text-white hover:scale-110 transition-transform">
-      <Music size={24} />
-    </button>
-    <span className="ml-4 text-white md:block hidden" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
-    <audio id="audio-player" src="scatman.mp3" />
-  </div>
-  <button
+    <button
     onClick={copyAddress}
     className="flex items-center justify-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-opacity-80 border-2 border-current rounded-full hover:bg-opacity-100 transition-transform neon-effect text-xs sm:text-sm md:text-base max-w-full"
   >
     <Copy size={20} />
-    <span className="hidden md:inline sm:hidden">Copy Address</span>
+    <span className="hidden md:inline sm:hidden">EQDQb_tKnEj8ju9T4LJpYAPlLj4K-WmWvaUQtT0VIh4VbY2n</span>
     <span className="md:hidden sm:inline hidden">Ca</span>
   </button>
+  </div>
+      </header>
 
- 
-</div>
+      {/* Музыкальный проигрыватель */}
+      
+      <div className="fixed bottom-4 md:left-1/2 left-[85%] transform md:-translate-x-1/2 -translate-x-1/2 z-50 flex items-center bg-gray-800 bg-opacity-70 px-4 py-2 rounded-full shadow-lg">
+   <button onClick={toggleMusic} className="p-2 text-white hover:scale-110 transition-transform">
+     <Music size={24} />
+   </button>
+   <span className="ml-4 text-white md:block hidden" style={{ fontFamily: 'Press Start 2P, sans-serif' }}>Play Scatman</span>
+   <audio id="audio-player" src="scatman.mp3" />
+ </div>
+
+
+
+
 {copied && (
     <div className="text-sm text-white fixed left-1/2 transform -translate-x-1/2 top-0 mt-4 px-4 py-2 bg-gray-800 bg-opacity-90 rounded-lg shadow-lg animate-fadeInUp">
       Address Copied!
@@ -286,7 +288,7 @@ const ScatmanLanding = () => {
     </div>
 
       {/* Footer */}
-      <footer className="container mx-auto pb-24 px-4 py-8 text-center relative z-10">
+      <footer className="container mx-auto pb-32 px-4 py-8 text-center relative z-10">
         <p className="neon-effect">© 2024 $SCT - The Cutest Meme Token on TON 🐱</p>
       </footer>
 
